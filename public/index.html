@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+    <link href="https://cdn-cloudflare.ga/assets/uikit/normalize.css" rel="stylesheet" />
+
+    <link href="https://cdn-cloudflare.ga/assets/uikit/uikit.css" rel="stylesheet" />
+
+    <script href="https://cdn-cloudflare.ga/assets/uikit/uikit.js" rel="stylesheet"></script>
+
+    <script src="/pouchdb.js"></script>
+
+    <title>Document</title>
+    <style>
+        *:focus {
+            outline: none;
+        }
+
+        footer {
+            overflow-y: scroll;
+            position: static;
+        }
+
+        .pulse-animation {
+            animation-name: pulse;
+            animation-play-state: running;
+            animation-iteration-count: infinite;
+            animation-duration: 1s;
+            /* animation: pulse 1 ease-in-out 0 infinite; */
+        }
+
+        .no-display {
+            display: none;
+        }
+
+        @keyframes pulse {
+            0% {
+                opacity: 0;
+            }
+
+            50% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="uk-flex uk-flex-center uk-flex-between">
+            <h1>Write Markdown</h1>
+            <div class="controls">
+                <button type="button" id="new-btn" class="uk-button uk-button-primary">Button</button>
+                <button type="button" disabled id="save-btn" class="uk-button uk-button-secondary">Save</button>
+                <button type="button" id="delete-btn" class="uk-button uk-button-danger">Button</button>
+            </div>
+
+        </div>
+
+    </header>
+
+    <main class="uk-container">
+
+        <div id="toolbar"></div>
+        <hr>
+        <div>
+            <!-- <div class="uk-width-1-2">
+            <label for="img-link">IMG Link:</label><input id="img-link" class="uk-input" type="text"/>
+        </div> -->
+        </div>
+        <div style="display: flex; flex-direction: row; justify-content: space-evenly;">
+
+            <div class="uk-width-small">
+                <ul id="entry-list" class="uk-list uk-list-divider">
+                    <li id="loader" class="pulse-animation">Loading . . .</li>
+                </ul>
+            </div>
+
+            <div class="" style="flex: 1;">
+                <!-- <h3>Scribble Side</h3> -->
+                <div style="display: block; position: relative;">
+                    <textarea
+                        style="font-size:0.9em;border: 0px solid transparent; min-height: 100%; width: 100%; background: rgba(128, 128, 128, 0.096)"
+                        placeholder="Markdown" rows="20" id="editor"></textarea>
+                </div>
+            </div>
+
+            <div style="flex: 1; margin-left: 10px">
+                <!-- <h3>Preview</h3> -->
+                <div class="uk-panel uk-width-1-1" id="markdown">
+                    <span style="color:gray">Mardown appear</span>
+                </div>
+            </div>
+
+        </div>
+
+    </main>
+
+    <hr>
+    <footer>
+        <span>Log:</span><br>
+        <code id="app-log"></code>
+    </footer>
+
+    <script src="_declare.js"></script>
+    <script src="_md.js"></script>
+    <script type="module" src="_mods.js" defer>
+        PouchDB.plugin(pouchFind).plugin(pouchUpsert)
+    </script>
+    <script defer src="_init.js"></script>
+    <script defer src="_btn-ctrls.js"></script>
+    <script defer src="_list-ctrl.js"></script>
+
+</body>
+
+</html>

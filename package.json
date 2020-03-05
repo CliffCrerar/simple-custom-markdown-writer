@@ -1,0 +1,19 @@
+{
+  "name": "monitor-couchy-pouchy",
+  "version": "0.5.0",
+  "private": true,
+  "main": "app.js",
+  "author": "Cliff Crerar",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "falcor-express": "^0.1.4",
+    "falcor-router": "^0.8.3",
+    "pouchdb-adapter-http": "^7.2.1",
+    "pouchdb-adapter-memory": "^7.2.1",
+    "pouchdb-find": "^7.2.1",
+    "pouchdb-node": "^7.2.1",
+    "pouchdb-upsert": "^2.2.0"
+  }
+}
